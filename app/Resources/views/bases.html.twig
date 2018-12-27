@@ -52,10 +52,10 @@
                     </ul>
                 </ul>
             </div>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav justify-content-end">
                         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
                             <li class="nav-item active">
-                                <a class="nav-link " href="{{ path('panier') }}"><i class="large material-icons">add_shopping_cart</i></a>
+                                <a class="nav-link " href="#"><i class="large material-icons">add_shopping_cart</i></a>
                             </li>
                             <li class="navbar-brand mb-0 h2 "><a href="{{path('fos_user_security_logout') }}">Se deconnecter</a></li>
                         {% else %}
