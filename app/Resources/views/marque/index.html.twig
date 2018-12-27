@@ -1,0 +1,57 @@
+{% extends 'bases.html.twig' %}
+
+{% block body %}
+<h1>Marques list</h1>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <h1>Liste des Categories</h1>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> Donnée
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom marque</th>
+                            <th scope="row">Visuel</th>
+                            <th scope="row">Editer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for marque in marques %}
+                            <tr>
+                                <td><a href="{{ path('marque_show', { 'id': marque.id }) }}" class="color">{{ marque.id }}</a></td>
+                                <td>{{ marque.nomMarque }}</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('marque_show', { 'id': marque.id }) }}" class="color">show</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('marque_edit', { 'id': marque.id }) }}" class="color">edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <ul>
+                        <li>
+                            <a href="{{ path('marque_new') }}" class="color">Créer une nouvelle marque</a>
+                        </li>
+                    </ul>
+                    <div class="card-footer small text-muted"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

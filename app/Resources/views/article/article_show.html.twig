@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        {% include 'ProduitBundle:Template:nav_produit.html.twig' %}
+<div class="container">
+    <h1 class="marg">Article</h1>
+
+    <table>
+        <tbody>
+            <tr>
+
+            </tr>
+            <tr>
+                <th>Nom article</th>
+                <td>{{ article.nomArticle }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><img class="figure-img img-fluid rounded" src="{{ asset( article.file) }}" height="600px" width="750px"></td>
+            </tr>
+            <tr>
+                <th>Prix article</th>
+                <td>{{ article.prixArticle }} €</td>
+            </tr>
+            <tr>
+                <th>Description article</th>
+                <td>{{ article.descriptionArticle }}</td>
+            </tr>
+            <tr>
+                <th>Quantite disponible</th>
+                <td>{{ article.quantiteArticle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="span3">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+      <button class="btn"><a class="color" href="{{ path('listeProduit')}}">Retour aux produits</a></button>
+    </div>
+    </div>
+{% endblock %}

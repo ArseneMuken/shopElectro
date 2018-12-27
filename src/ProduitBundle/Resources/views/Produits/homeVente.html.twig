@@ -1,0 +1,55 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Nos Produits{% endblock %}
+
+{% block body %}
+    {% include "ProduitBundle:Template:nav_produit.html.twig" %}
+
+    <div class="my">
+        <h1 style="margin-top: 5rem;" class="col-md-5 offset-md-">Nos produits</h1>
+    </div>
+    <div class="conteneur">
+
+    </div>
+    <div class="container">
+    <div class="card-deck">
+        <div class="conteneur">
+            <h2 class="my">Nos nouvelles tablette</h2>
+            {% include "::home/best-in-category.html.twig" with { 'images': tablet } %}
+        </div>
+
+        <div class="conteneur">
+            <h2 class="my">Nos nouveaux Ordinateur portable</h2>
+            {% include "::home/best-in-category.html.twig" with { 'images': laptop } %}
+        </div>
+
+        <div class="conteneur">
+            <h2 class="my">Nos nouveaux Ordinateur</h2>
+            {% include "::home/best-in-category.html.twig" with { 'images': desktop } %}
+        </div>
+        <div class="conteneur">
+            <h2 class="my">Nos nouvelles tablette graphique</h2>
+            {% include "::home/best-in-category.html.twig" with { 'images': tabletGrafik } %}
+        </div>
+    </div>
+
+    <div class="card-columns">
+        {% for image in randomised_images %}
+        <div class="card"><a class="color" href="#">
+                <img class="card-img-top" src="/images/{{ image }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+                {% endfor %}
+            </a>
+        </div>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(images) }}
+        </div>
+    </div>
+    {% include "ProduitBundle:Template:footer.html.twig" %}
+{% endblock %}

@@ -1,0 +1,74 @@
+{% trans_default_domain 'FOSUserBundle' %}
+ <div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="card border-none">
+                <div class="card-body">
+                    <h1>S'inscrire</h1>
+                        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                         <div class="mt-4">
+                            {{ form_label(form.username)}}
+                            {{ form_widget(form.username, {'attr':{'class':'form-control','onblur':'valider_username()'}}) }}
+                            {{ form_errors(form.username) }}
+                            <span id="error-username"></span><br>
+
+                            {{ form_label(form.email)}}
+                            {{ form_widget(form.email, {'attr':{'class': 'validate','onblur':'valider_email()'}}) }}
+                            {{ form_errors(form.email) }}
+                            <span id="error-usermail"></span><br>
+
+                            {{ form_label(form.plainPassword.first)}}
+                            {{ form_widget(form.plainPassword.first, {'attr':{'class': 'form-control','onblur':'valider_mdp()'}}) }}
+                             {{ form_errors(form.plainPassword.first) }}<br>
+
+                            {{ form_label(form.plainPassword.second)}}
+                            {{ form_widget(form.plainPassword.second, {'attr':{'class': 'form-control','onblur':'valider_mdp()'}}) }}
+                            {{ form_errors(form.plainPassword.second) }}<br>
+
+                        <div>
+                             <input type="submit" id="_submit" class="btn btn-lg btn-primary btn-block" name="_submit" value="{{ 'registration.submit'|trans }}" />
+                        </div>
+
+                       <div class="card-action">
+                            <div class="row">
+                                <div class="col s12 section center">
+                                    <a class="btn waves-light  deep-orange darken-3" href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                                </div>
+                             </div>
+                        </div>
+                                {{ form_end(form) }}
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function valider_username() {
+        var nom = document.getElementById('fos_user_registration_form_username').value;
+        var myRegex = /^[A-Za-z]{5,15}$/;
+        valider = myRegex.test(nom);
+        if (valider == false) {
+            document.getElementById('error-username').innerHTML = "votre pseudo n'est pas conforme (5 caractères min)";
+        }
+        else {
+            document.getElementById('error-username').innerHTML = "";
+        }
+    }
+
+    function valider_email() {
+        var email = document.getElementById('fos_user_registration_form_email').value;
+        var myRegex = /^[a-z0-9._-]+@[a-z]+\.[a-z]{2,3}$/i;
+        ;
+        valider = myRegex.test(email);
+            if (valider == false) {
+                document.getElementById('error-usermail').innerHTML = "votre email n'est pas conforme";
+            }
+            else {
+                document.getElementById('error-usermail').innerHTML = "";
+            }
+
+    }
+</script>

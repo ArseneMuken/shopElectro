@@ -1,0 +1,27 @@
+{% extends 'bases.html.twig' %}
+
+{% block body %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <h1 >Article creation </h1>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> Donnée</div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-danger" value="Enregistrer" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li class="list">
+            <a class="color" href="{{ path('article_index') }}">retourner à la liste</a>
+        </li>
+    </ul>
+         <div class="card-footer small text-muted"></div>
+                </div></div></div></div></div>
+
+    </div></div>
+{% endblock %}

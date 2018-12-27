@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Nos Produits{% endblock %}
+
+{% block body %}
+    {% include "ProduitBundle:Template:nav_produit.html.twig" %}
+        <div>
+            {% include "::home/best-in-category.html.twig"%}
+        </div>
+        <div class="my">
+            <h1 style="margin-top: 2rem;" class="col-md-5 offset-md-">Nos produits</h1>
+        </div>
+
+    <div class="container ">
+        <div class="row">
+            <div class="card-deck">
+                {% for article in article %}
+                <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{ asset(article.file) }}" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ article.marque.nomMarque }}</h4>
+                                <h4 class="card-title">{{ article.nomArticle }}</h4>
+                                <p class="card-text">{{ article.prixArticle }} €</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a class="color" href="{{ path('article_show', { 'id': article.id }) }}">Voir</a></button>
+                                    </div>
+                                    <small class="text-muted">{{ article.dateCreatArticle |date('d-m-Y')}}</small>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(article) }}
+    </div>
+
+</div>
+    {% include "ProduitBundle:Template:footer.html.twig" %}
+{% endblock %}

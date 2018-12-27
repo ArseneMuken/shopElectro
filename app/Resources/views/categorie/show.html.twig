@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        {% include 'ProduitBundle:Template:nav_produit.html.twig' %}
+<div class="container">
+    <h1 class="marg">Categorie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom categorie</th>
+                <td>{{ categorie.nomCategorie }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+
+
+        <p><a class="color" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Edit</a></p>
+        <p><a class="color" href="{{ path('categorie_index') }}">Retour à la liste</a></p>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-outline-danger btn-lg " value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include "ProduitBundle:Template:nav_produit.html.twig" %}
+<div class="container">
+    <h1 class="marg">Marque</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ marque.id }}</td>
+            </tr>
+            <tr>
+                <th>La marque</th>
+                <td>{{ marque.nomMarque }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('marque_index') }}" class="color">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('marque_edit', { 'id': marque.id }) }}" class="color">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-outline-danger btn-lg value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+{% endblock %}

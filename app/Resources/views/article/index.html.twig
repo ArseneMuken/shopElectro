@@ -1,0 +1,66 @@
+{% extends 'bases.html.twig' %}
+
+{% block body %}
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+    <h1 >Liste des Articles </h1>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Donnée</div>
+        <div class="card-body">
+            <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th scope="row">Id</th>
+                <th scope="row">Nom categorie</th>
+                <th scope="row">La Marque</th>
+                <th scope="row">Nom article</th>
+                <th scope="row">Image</th>
+                <th scope="row">Prix article</th>
+                <th scope="row">Quantité article</th>
+                <th scope="row">Visuel</th>
+                <th scope="row">Edition</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a class="color" href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.categorie.nomCategorie }}</td>
+                <td>{{ article.marque.nomMarque }}</td>
+                <td>{{ article.nomArticle }}</td>
+                <td><img src="{{ asset( article.file) }}" height="50px" width="100px"></td>
+                <td>{{ article.prixArticle }} €</td>
+                <td>{{ article.quantiteArticle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a class="color" href="{{ path('article_show', { 'id': article.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a class="color" href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="color" href="{{ path('article_new') }}">Créer un nouvelle article</a>
+        </li>
+    </ul>
+         <div class="card-footer small text-muted"></div>
+</div>
+</div>
+</div>
+        </div></div>
+{% endblock %}

@@ -1,3 +1,24 @@
+produit_marque:
+    resource: "@ProduitBundle/Controller/MarqueController.php"
+    type:     annotation
+
+produit_categorie:
+    resource: "@ProduitBundle/Controller/CategorieController.php"
+    type:     annotation
+
+produit_article:
+    resource: "@ProduitBundle/Controller/ArticleController.php"
+    type:     annotation
+
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
+produit:
+    resource: "@ProduitBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
@@ -6,3 +27,6 @@ user:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        {% include 'ProduitBundle:Template:nav_produit.html.twig' %}
+<div class="container">
+    <h1 class="marg">Article</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nom article</th>
+                <td>{{ article.nomArticle }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><img class="figure-img img-fluid rounded" src="{{ asset( article.file) }}" height="600px" width="750px"></td>
+            </tr>
+            <tr>
+                <th>Prix article</th>
+                <td>{{ article.prixArticle }} €</td>
+            </tr>
+            <tr>
+                <th>Description article</th>
+                <td>{{ article.descriptionArticle }}</td>
+            </tr>
+            <tr>
+                <th>Quantite disponible</th>
+                <td>{{ article.quantiteArticle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        Choisir la quantité <span class="glyphicon glyphicon-play"></span>
+        </a></button></td>
+
+    <ul>
+        <li>
+            <a class="color" href="{{ path('article_index')}}">Back to the list</a>
+        </li>
+        {% if is_granted('ROLE_ADMIN') %}
+        <li>
+            <a class="color" href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
+        </li>
+        <br>
+        <li>
+            <br>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
